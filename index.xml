@@ -13,10 +13,10 @@
     
     <item>
       <title>日志要认真写</title>
-      <link>https://www.7lemon.net/posts/20160110-logging/</link>
+      <link>https://www.7lemon.net/blog/%E6%97%A5%E5%BF%97%E8%A6%81%E8%AE%A4%E7%9C%9F%E5%86%99/</link>
       <pubDate>Sun, 10 Jan 2016 10:28:06 +0800</pubDate>
       
-      <guid>https://www.7lemon.net/posts/20160110-logging/</guid>
+      <guid>https://www.7lemon.net/blog/%E6%97%A5%E5%BF%97%E8%A6%81%E8%AE%A4%E7%9C%9F%E5%86%99/</guid>
       <description>曾经，我是不怎么关心程序里的日志的。每次写程序都是写完逻辑，顺带着在一些关键部位加一些日志记录。或者是在调试的过程中插入一些日志。在测试环境这么做完全没问题。因为整个环境只有我一个人在用，每次执行程序，只有那几条日志被打印出来而已。肉眼一扫就知道有没有问题了。工作中发现，很多人其实也是这样，随手写点日志，甚至根本不写日志。
 糟糕的日志 直到有一天我需要检查一个问题，有反馈说某个用户收不到我们系统发出的消息。怎么回事呢？系统在线上运行了，也不能为了这一个个例停掉整个系统来调试吧？投递消息这里应该记录了日志，于是打开日志文件检查，看到了如下让人目瞪口呆的内容：
 [2015-12-01 14:54:33][INFO] send message ok [2015-12-01 14:54:33][INFO] send message fail [2015-12-01 14:54:33][INFO] send message ok [2015-12-01 14:54:34][INFO] send message ok [2015-12-01 14:54:34][INFO] send message fail [2015-12-01 14:54:35][INFO] send message ok  这谁写的日志给我站出来！你语文是体育老师教的吗？
@@ -30,10 +30,10 @@
     
     <item>
       <title>为什么要自己写个HTML数字键盘</title>
-      <link>https://www.7lemon.net/posts/20151230-keyboard/</link>
+      <link>https://www.7lemon.net/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%AAhtml%E6%95%B0%E5%AD%97%E9%94%AE%E7%9B%98/</link>
       <pubDate>Wed, 30 Dec 2015 22:27:48 +0800</pubDate>
       
-      <guid>https://www.7lemon.net/posts/20151230-keyboard/</guid>
+      <guid>https://www.7lemon.net/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%AAhtml%E6%95%B0%E5%AD%97%E9%94%AE%E7%9B%98/</guid>
       <description>我们有个面向移动端的HTML页面，使用的时候需要在一个输入框里输入些数字。一开始的时候为了快速实现功能，直接放了个input框在那里。
 结果就是使用的时候需要先点击输入框，弹出键盘以后要切换到数字键盘，接着才能输入数字。但是，你永远无法预知用户如何使用你的产品，很快我们就发现有乱七八糟的字符被提交上来了。可是我们要的只是数字而已。于是，给input框绑了个事件，每次用户输入之后检查用户输入的内容，如果内容不是数字，那就不写进input框里。
 如果事情就这样结束了可能还要花好久我们才能想到自己写个数字键盘。由于用户的移动设备的差异，input框检查需要兼容很多情况，各种浏览器，各种输入法。虽然我们在各种测试机上测试都没问题，但是还是有反馈说能输入框里能输入中文。甚至把input的type属性改成了number也没用。
@@ -47,10 +47,10 @@ NPM: JK-Keyboard</description>
     
     <item>
       <title>说说测试的事</title>
-      <link>https://www.7lemon.net/posts/20151219-testing/</link>
+      <link>https://www.7lemon.net/blog/%E8%AF%B4%E8%AF%B4%E6%B5%8B%E8%AF%95%E7%9A%84%E4%BA%8B/</link>
       <pubDate>Sat, 19 Dec 2015 22:27:29 +0800</pubDate>
       
-      <guid>https://www.7lemon.net/posts/20151219-testing/</guid>
+      <guid>https://www.7lemon.net/blog/%E8%AF%B4%E8%AF%B4%E6%B5%8B%E8%AF%95%E7%9A%84%E4%BA%8B/</guid>
       <description>我是一个不专业的程序员。每次接到新的题目，在纸上画画逻辑，想想手头现有的资源，琢磨琢磨程序结构，然后就直接把代码写出来了。写完以后一般是在命令行或者网页上走一遍。发现哪里不对再到代码里打点，插日志，然后再走一遍。就这样一遍一遍重复，最后自己认为没问题了，“走起，上线！”
 时间没过多久，接到新的需求说要在上次的功能上加点儿东西。Easy，加！嗯，这里这个流程可以封装一下，于是封装了一个函数。接着开始实现新的需求。写完了以后在命令行或者网页上走一遍新的需求，发现没问题，“走起，上线！”
 过了不一会儿接到消息说，原来运行正常的某个功能不好使了。你们这帮人，错就说错在哪，不好使是什么意思？打开日志一看，还真不好使了。于是又补了点儿日志，查查到底怎么个情况。噢，原来上次封装的那个函数那里出了点问题，改吧。改完再走一遍原来的流程，发现没啥问题，“走起，上线！”

@@ -3,28 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.7lemon.net/posts/20160110-logging/</loc>
+    <loc>https://www.7lemon.net/blog/%E6%97%A5%E5%BF%97%E8%A6%81%E8%AE%A4%E7%9C%9F%E5%86%99/</loc>
     <lastmod>2016-01-10T10:28:06+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.7lemon.net/posts/20151230-keyboard/</loc>
+    <loc>https://www.7lemon.net/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%AAhtml%E6%95%B0%E5%AD%97%E9%94%AE%E7%9B%98/</loc>
     <lastmod>2015-12-30T22:27:48+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.7lemon.net/posts/20151219-testing/</loc>
+    <loc>https://www.7lemon.net/blog/%E8%AF%B4%E8%AF%B4%E6%B5%8B%E8%AF%95%E7%9A%84%E4%BA%8B/</loc>
     <lastmod>2015-12-19T22:27:29+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.7lemon.net/categories/</loc>
+    <loc>https://www.7lemon.net/blog/</loc>
+    <lastmod>2016-01-10T10:28:06+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.7lemon.net/posts/</loc>
-    <lastmod>2016-01-10T10:28:06+08:00</lastmod>
+    <loc>https://www.7lemon.net/categories/</loc>
     <priority>0</priority>
   </url>
   

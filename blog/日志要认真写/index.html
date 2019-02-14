@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="Seven Lemons" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.7lemon.net/posts/20151219-testing/" />
-<meta property="og:title" content="说说测试的事" />
-<meta property="twitter:title" content="说说测试的事">
+<meta property="og:url" content="https://www.7lemon.net/blog/%E6%97%A5%E5%BF%97%E8%A6%81%E8%AE%A4%E7%9C%9F%E5%86%99/" />
+<meta property="og:title" content="日志要认真写" />
+<meta property="twitter:title" content="日志要认真写">
 
     <meta property="twitter:card" content="summary">
 
@@ -26,10 +26,10 @@
 <title>
 
 
-     Seven Lemons - 说说测试的事 
+     Seven Lemons - 日志要认真写 
 
 </title>
-<link rel="canonical" href="https://www.7lemon.net/posts/20151219-testing/">
+<link rel="canonical" href="https://www.7lemon.net/blog/%E6%97%A5%E5%BF%97%E8%A6%81%E8%AE%A4%E7%9C%9F%E5%86%99/">
 
 
 <style media="screen">
@@ -998,10 +998,10 @@ margin-left: -4%;
             <nav>
                 <ul>
                     
+                            <li><a href="https://www.7lemon.net/blog/">Blog</a></li>
+                    
                     
                         
-                            
-                            <li><a href="https://www.7lemon.net/posts">posts</a></li>
                             
                         
                     
@@ -1014,74 +1014,146 @@ margin-left: -4%;
 
 
 
-<div class="main column">
+
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            <div class="page-heading">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
     
-    说说测试的事
+    日志要认真写
     
 
 </div>
 
+                </div>
+                <div class="meta">
+                    <div class="date" title="Sun Jan 10 2016 10:28:06 CST">Jan 10, 2016</div>
+                    
+                        
+                    
+                    
+                    <div class="reading-time middot">1 minute read</div>
+                    
+                    <div class="tags">
+                        <ul>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="markdown">
                 
     
     
 
-<p>我是一个不专业的程序员。每次接到新的题目，在纸上画画逻辑，想想手头现有的资源，琢磨琢磨程序结构，然后就直接把代码写出来了。写完以后一般是在命令行或者网页上走一遍。发现哪里不对再到代码里打点，插日志，然后再走一遍。就这样一遍一遍重复，最后自己认为没问题了，“走起，上线！”</p>
+<p>曾经，我是不怎么关心程序里的日志的。每次写程序都是写完逻辑，顺带着在一些关键部位加一些日志记录。或者是在调试的过程中插入一些日志。在测试环境这么做完全没问题。因为整个环境只有我一个人在用，每次执行程序，只有那几条日志被打印出来而已。肉眼一扫就知道有没有问题了。工作中发现，很多人其实也是这样，随手写点日志，甚至根本不写日志。</p>
 
-<p>时间没过多久，接到新的需求说要在上次的功能上加点儿东西。Easy，加！嗯，这里这个流程可以封装一下，于是封装了一个函数。接着开始实现新的需求。写完了以后在命令行或者网页上走一遍新的需求，发现没问题，“走起，上线！”</p>
+<h3 id="糟糕的日志">糟糕的日志</h3>
 
-<p>过了不一会儿接到消息说，原来运行正常的某个功能不好使了。你们这帮人，错就说错在哪，不好使是什么意思？打开日志一看，还真不好使了。于是又补了点儿日志，查查到底怎么个情况。噢，原来上次封装的那个函数那里出了点问题，改吧。改完再走一遍原来的流程，发现没啥问题，“走起，上线！”</p>
+<p>直到有一天我需要检查一个问题，有反馈说某个用户收不到我们系统发出的消息。怎么回事呢？系统在线上运行了，也不能为了这一个个例停掉整个系统来调试吧？投递消息这里应该记录了日志，于是打开日志文件检查，看到了如下让人目瞪口呆的内容：</p>
 
-<p>又过了一会儿，说刚刚做的新需求又出问题了……你这不是跟我闹呢么！</p>
+<pre><code>[2015-12-01 14:54:33][INFO] send message ok
+[2015-12-01 14:54:33][INFO] send message fail
+[2015-12-01 14:54:33][INFO] send message ok
+[2015-12-01 14:54:34][INFO] send message ok
+[2015-12-01 14:54:34][INFO] send message fail
+[2015-12-01 14:54:35][INFO] send message ok
+</code></pre>
 
-<h4 id="人肉测试">人肉测试</h4>
+<p>这谁写的日志给我站出来！你语文是体育老师教的吗？</p>
 
-<p>前面写得有点夸张，真是这样的话早被开除800回了。这里问题也很明显：每次实现功能之后，没有进行系统完整的测试就匆忙（哪来的自信）上线了。我需要些测试来<strong>保证程序的质量</strong>。</p>
+<p>老师从小就教导我们，叙述事情要讲清楚时间，地点，人物，事件。这一条日志你只写了个事件，时间都是框架帮你写好的，然后事件你还没讲清楚。有十个模块在发消息，我怎么直到这些日志是哪个模块写的？就算只有一个模块在记录这些日志，怎么能知道是发给谁的消息成功或者失败了？发送失败了，那么原因是什么？</p>
 
-<p>于是我想了个办法，把需要测试的功能点列个表，每次做完的时候要逐个检查每项功能是否正确。怎么检查？当然是网页上的流程就去点网页，命令行的流程就去执行命令行，涉及到数据的再去检查数据库记录咯！一开始，这个方法是有效的，直到每次上线前我要检查500个功能点……</p>
+<h3 id="详细的日志">详细的日志</h3>
 
-<h4 id="你不说你是程序员么">你不说你是程序员么</h4>
+<p>有些同学没有意识到日志的作用。日志是用来记录事情的。它并不是给你调试用的工具，调试程序有专门的调试工具可以用。既然是描述事情的就需要具备上面至少四点：时间，地点，人物，事件。那么按照这个思路再来考虑一下日志应该怎么写。</p>
 
-<p>检查一个功能点要1分钟的话，检查500个功能点就要500分钟，一天都过去了还上不了线只能加班。如果每天都有新需求过来，每天都要上线的话……太可怕，不敢想。我们这儿没有专职的测试人员，只能写程序的程序员自己来测试功能，等等……</p>
+<p>时间一般的日志系统会自动加上。地点就可以写上哪个模块。人物可以写触发这个事件的主体。事件当然就描述发生了什么，详细程度可根据实际需要适当调整。修改后的日志写出来大概是这样：</p>
 
-<p>对啊，我不是程序员么？既然我能写程序，为啥我就不能<strong>写个程序去测试我的程序</strong>呢？这样就不用每次上线之前都手动检查之前的功能点了啊！说干就干，不能整天把时间浪费在点网页上（甚至有些移动端的网页还要掏出手机来各种操作，简直了）！</p>
+<pre><code>[2015-12-01 14:54:34][INFO] SMS_Sender [verify] send message to [186XXXXZZZZ] ok
+[2015-12-01 14:54:34][ERROR] SMS_Sender [verify] send message to [110] fail: invalid phone number
+</code></pre>
 
-<h4 id="说干就干的单元测试">说干就干的单元测试</h4>
+<p>差不多就是这个意思。这两行日志比之前那种好得多，至少一眼看去直到是哪个模块在调用什么类型的过程时出了什么样的问题。正确的事件并不需要太多细节，而发生错误的事件我需要知道发生了什么样的错误。大部分情况下，这种详细程度的日志就足够应付生产环境的大部分问题了。</p>
 
-<p>我想，至少要保证程序的每个小单元正确，这样把它们拼装起来才能正确吧！于是，找个了文件，先对里面的这个类写个测试程序好了。建个文件，引用下这个类，创建个实例。然后针对要测试的第一个方法写个函数，调用这个函数，判断下输出是否符合预期。如果不符合，在命令行里打出一行错误信息。</p>
+<h3 id="可追踪的日志">可追踪的日志</h3>
 
-<p>按照上面的流程写完整个类的测试代码，“走起！”如我所愿（嘴角露出了自满的微笑），并没有报错。但是，其实我并没有满足。因为在测试程序里，每个要测试的方法我只调用了一次，还有一些<strong>边界条件</strong>需要检查。并且，有些函数里有<strong>逻辑分支</strong>，我要想想怎么把这些分支都测到。</p>
+<p>至于日志需要描述得多细致，还是需要根据实际情况去斟酌。比如我有一个支付系统，虽然我的数据库里也有支付记录，但是我还是需要日志来跟踪一些操作。那么，可能我在整个支付流程的日志中，每条都要加入一个唯一的ID。这样就可以根据这个ID来追踪程序的运行流程。</p>
 
-<p>经过一番折腾，终于写完了一个小程序去测试一个类啦！并且我试着在类上加一些对原有逻辑有破坏性的代码，这时再跑一遍测试程序，果然报错了，赞！</p>
+<pre><code>[2015-12-01 14:54:40][INFO] Pay [9cb3][generate] create order for user 1, id:36
+[2015-12-01 14:54:40][INFO] Pay [9cb3][delay] checking status job dispatched for order id:36 
+[2015-12-01 14:54:40][INFO] SMS_Sender [9cb3][verify] send message to [186XXXXZZZZ] ok
+</code></pre>
 
-<p>于是这一天什么工作都没做，只是写了个测试脚本。要苦逼加班了！</p>
+<h3 id="其他用途">其他用途</h3>
 
-<h4 id="写什么测试啊浪费时间">写什么测试啊浪费时间</h4>
+<p>有人会问，记这些东西除了出了问题查起来方便，还能有什么用？其实出了问题查找起来方便是日志主要作用。除了这个还能用来做告警，还能用来做统计分析。</p>
 
-<p>因为这几天一直在琢磨测试的事，被吐槽工作进度太慢。你瞅瞅那谁家小谁，100个功能都做完了你还在这磨洋工！我说我在写测试啊，然后又被训了：“你这明显<strong>增加代码量</strong>啊，平白无故给自己增加负担知道不知道？给你的工资可不包含这部分代码，这是你自己要写的。浪费时间……”</p>
+<p>用日志来做告警这个很容易理解，比如你在程序抛出异常的时候会写一条<code>ERROR</code>级别的日志。程序上线之后你总不能时刻盯着日志看吧。于是搞这么一个程序一直盯着日志，日志写一行它读一行，发现ERROR之后发个邮件也好发条短信也好，这就算是简单的告警了。有人说我在代码里植入报警不就可以了，为啥还要监控日志这么麻烦？我就笑笑不说话。</p>
 
-<p>但是我不死心啊，哼，你懂什么，除了催就知道催。我这可是工作<strong>自动化</strong>。</p>
+<p>统计分析是怎么回事呢？还拿上面的支付系统来说吧。例如你想得到一个用户购买情况的实时报表，显示每个时段有多少笔订单。你可以说我实时去数据库里查，但是这样会给数据库增加额外的负担。有一种做法是把一些订单数据写到日志里，像用户id，金额，交易方式等等。然后，还是搞这么一个程序一直盯着日志，把订单相关的日志过滤出来，再用正则把需要统计的数据匹配出来，存储到一个专门用来出报表的数据库（其实完全可以把日志存成json格式）。</p>
 
-<h4 id="原来还有测试框架">原来还有测试框架</h4>
+<p>可能在很多年以前就有人这么用日志了，只不过最近ELK越来越成熟，这种用法才进入了更多人的视野。ELK就是ElasticSearch，LogStash和Kibana——LogStash用来收集日志，ElasticSearch做存储索引和搜索，Kibana用来展示图表。</p>
 
-<p>见识短浅了，自己写了一套东西以后才发现原来还有一堆叫做<strong>测试框架</strong>的玩意儿。研究了一下找个用的人多的直接拿来用好了。这东西用着确实爽，哪儿还用自己写报错信息，哪还用自己写些if else判断函数输出，早有人帮你写好了。什么<code>assert</code>，一会儿<code>should</code>一会儿又<code>expect</code>的，整不明白反正就用吧！</p>
+<h3 id="总结">总结</h3>
 
-<h4 id="从测试中受益">从测试中受益</h4>
-
-<p>渐渐地发现，别人在网页检查数据的时候，我在写测试代码检查网页的数据；别人在数据库里检查数据的时候，我在写测试代码检查数据库的数据；别人在发网络请求检查返回数据处理的时候，我伪造了网络请求返回了期望的数据；别人在网页上走流程的时候，我一个命令自动生成了一堆数据在几秒钟内走了一遍完成的流程……这回咱说上线就上线，就是这么<strong>自信</strong>！</p>
-
-<p>哼哼哼，那谁家小谁做100个功能，我也能做100个功能，我还能“尽量”保证这100个功能的稳定。</p>
-
-<p>慢慢地发现，好像工作也并没有那么复杂了。因为大部分烦人的验证过程都<strong>交给了测试程序去做</strong>。并且后来我做了个脚本，每当项目的一个文件有变化的时候，就<strong>自动</strong>执行相应的测试。如果测试没通过，就发个通知给我。后来索性就先写测试，然后再写程序代码，写着写着测试通过了，我就知道这段逻辑大致没啥问题啦！</p>
-
-<p>因为空下来很多时间，这段时间我就到处去看其他乱七八糟的项目，偶尔还玩玩游戏。后来，空下来的这段时间，我就只用来玩游戏。后来就被开除了。😂</p>
+<p>所以说，为什么日志要认真写？</p>
 
 
             </div>
+            
+            
+            <br>
+            <div class="navigation">
+                
+                <div>
+                    <img class="icon" src="https://www.7lemon.net/img/back.svg" alt="back" />
+                    <a href="https://www.7lemon.net/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%AAhtml%E6%95%B0%E5%AD%97%E9%94%AE%E7%9B%98/">为什么要自己写个HTML数字键盘</a>
+                </div>
+                
+                <div style="width: 100%;"></div>
+                
+            </div>
+            
+            
+            <br>
+            <div class="disqus">
+                <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "7lemon" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+
+            
+
+            
         </div>
     </div>
 </div>
