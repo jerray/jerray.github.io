@@ -6,7 +6,7 @@
     <description>Recent content on Seven Lemons</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 10 Jan 2016 22:28:06 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 10 Jan 2016 10:28:06 +0800</lastBuildDate>
     
 	<atom:link href="https://jerray.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>日志要认真写</title>
       <link>https://jerray.github.io/posts/20160110-logging/</link>
-      <pubDate>Sun, 10 Jan 2016 22:28:06 +0800</pubDate>
+      <pubDate>Sun, 10 Jan 2016 10:28:06 +0800</pubDate>
       
       <guid>https://jerray.github.io/posts/20160110-logging/</guid>
       <description>曾经，我是不怎么关心程序里的日志的。每次写程序都是写完逻辑，顺带着在一些关键部位加一些日志记录。或者是在调试的过程中插入一些日志。在测试环境这么做完全没问题。因为整个环境只有我一个人在用，每次执行程序，只有那几条日志被打印出来而已。肉眼一扫就知道有没有问题了。工作中发现，很多人其实也是这样，随手写点日志，甚至根本不写日志。
